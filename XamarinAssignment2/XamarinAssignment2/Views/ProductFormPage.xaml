@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinAssignment2.Views.ProductFormPage"
+             xmlns:viewmodel="clr-namespace:XamarinAssignment2.ViewModels">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <viewmodel:ProductFormViewModel x:Key="prductFormViewModel"></viewmodel:ProductFormViewModel>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BindingContext="{Binding Source={StaticResource prductFormViewModel}}">
+            <Label Text="Add Product"></Label>
+
+            <Label Text="Product Row Id"></Label>
+            <Entry x:Name="productRowIdEntry" IsReadOnly="True" Text="{Binding Path=Product.ProductRowId}"></Entry>
+            <Label Text="Product ID"></Label>
+            <Entry x:Name="productIdEntry" Placeholder="Product ID" Text="{Binding Path=Product.ProductId}"></Entry>
+            <Label Text="Product Name"></Label>
+            <Entry x:Name="productNameEntry" Placeholder="Product Name" Text="{Binding Path=Product.ProductName}"></Entry>
+            <Label Text="Product Manufacturer"></Label>
+            <Picker x:Name="productManufacturerPicker" ItemsSource="{Binding Path=Manufacturers}" SelectedIndex="{Binding Path=Product.ProductManufacturer}"></Picker>
+            <Label Text="Product Category"></Label>
+            <Picker x:Name="productCategoryPicker" ItemsSource="{Binding Path=Categories}" SelectedIndex="{Binding Path=Product.ProductCategory}"></Picker>
+            <Label Text="Product Description"></Label>
+            <Entry x:Name="productDescriptionEntry" Placeholder="Product Description" Text="{Binding Path=Product.ProductDescription}"></Entry>
+            <Label Text="Product Price"></Label>
+            <Entry x:Name="productPriceEntry" Placeholder="Product Price" Text="{Binding Path=Product.ProductPrice}"></Entry>
+
+            <Button x:Name="submitBtn" Text="Submit" Command="{Binding Path=AddProductCommand}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

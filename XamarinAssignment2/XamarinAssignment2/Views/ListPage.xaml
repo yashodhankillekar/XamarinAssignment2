@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinAssignment2.Views.ListPage"
+             xmlns:viewmodel="clr-namespace:XamarinAssignment2.ViewModels">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <viewmodel:ProductViewModel x:Key="prductViewModel"></viewmodel:ProductViewModel>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <StackLayout BindingContext="{Binding Source={StaticResource prductViewModel}}">
+            <Button x:Name="addNewProductBtn" Text="Add New Product" Command="{Binding Path=GoToFormPage}"></Button>
+            <Button x:Name="getListBtn" Text="Get Data" Command="{Binding Path=GetProductsCommand}"></Button>
+            <ListView x:Name="listViewProduct" ItemsSource="{Binding Products}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Path=ProductRowId}"></Label>
+                                <Label Text="{Binding Path=ProductId}"></Label>
+                                <Label Text="{Binding Path=ProductName}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
